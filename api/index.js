@@ -4,10 +4,12 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import cookieParser from "cookie-parser";
 import multer from "multer";
-
+import bodyParser from "body-parser";
 const app = express();
-
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(express.json());
+
 app.use(cookieParser());
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
